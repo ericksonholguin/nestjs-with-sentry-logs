@@ -24,6 +24,16 @@ export class UsersController {
     };
   }
 
+  // send entry error
+  @Get('throw-error')
+  throwError() {
+    const result = this.usersService.throwError();
+    return {
+      message: 'Error thrown successfully',
+      data: result,
+    };
+  }
+
   @Get(':id')
   async findOne(@Param('id') id: string) {
     const user = await this.usersService.retrieveUser(id);
